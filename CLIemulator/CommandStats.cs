@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CLIemulator
+namespace TerminalEmulator
 {
     public static class CommandStats
     {
