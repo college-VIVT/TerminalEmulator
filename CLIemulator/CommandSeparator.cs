@@ -9,9 +9,9 @@ namespace TerminalEmulator
 {
     public static class CommandSeparator
     {
-        static string commandRegExPattern = @"("".*?""|.*?) ";
+        private static readonly string commandRegExPattern = @"("".*?""|.*?) ";
 
-        public static bool OnNewCommand(string commandLine)
+        public static void OnNewCommand(string commandLine)
         {
             if (commandLine != "")
             {
@@ -26,13 +26,11 @@ namespace TerminalEmulator
                 for (var i = 1; i < machesCount; i++)
                     args.Add(maches[i].Groups[1].Value.Replace("\"", ""));
 
-                return CommandDistribute(command, args);
+                CommandDistribute(command, args);
             }
-
-            return false;
         }
 
-        public static bool CommandDistribute(string commandName, List<string> commandArgs)
+        public static void CommandDistribute(string commandName, List<string> commandArgs)
         {
             commandName = commandName.ToLower();
             var argsCount = commandArgs.Count;
@@ -43,20 +41,40 @@ namespace TerminalEmulator
                         OnCommand.OnCommand_CD(commandArgs, argsCount);
                     break;
                 case "ls": case "dir":
-                    if (CheckArgs(commandName, CommandStats.command_LS_DIR_argsCount, argsCount))
-                        OnCommand.OnCommand_LS_DIR(commandArgs, argsCount);
+                    if (CheckArgs(commandName, CommandStats.command_Ls_Dir_argsCount, argsCount))
+                        OnCommand.OnCommand_Ls_Dir(commandArgs, argsCount);
                     break;
                 case "help": case "?":
-                    if (CheckArgs(commandName, CommandStats.command_HELP_argsCount, argsCount))
-                        OnCommand.OnCommand_HELP();
+                    if (CheckArgs(commandName, CommandStats.command_Help_argsCount, argsCount))
+                        OnCommand.OnCommand_Help();
                     break;
                 case "move": case "mv":
-                    if (CheckArgs(commandName, CommandStats.command_MOVE_MV_argsCount, argsCount))
-                        OnCommand.OnCommand_MOVE_MV(commandArgs, argsCount);
+                    if (CheckArgs(commandName, CommandStats.command_Move_Mv_argsCount, argsCount))
+                        OnCommand.OnCommand_Move_Mv(commandArgs, argsCount);
                     break;
                 case "copy": case "cp":
-                    if (CheckArgs(commandName, CommandStats.command_MOVE_MV_argsCount, argsCount))
-                        OnCommand.OnCommand_COPY_CP(commandArgs, argsCount);
+                    if (CheckArgs(commandName, CommandStats.command_Move_Mv_argsCount, argsCount))
+                        OnCommand.OnCommand_Copy_Cp(commandArgs, argsCount);
+                    break;
+                case "del": case "delete": case "rm": case "rem": case "remove":
+                    if (CheckArgs(commandName, CommandStats.command_Del_Delete_Rm_Rem_Remove_argsCount, argsCount))
+                        OnCommand.OnCommand_Del_Delete_Rm_Rem_Remove(commandArgs, argsCount);
+                    break;
+                case "touch": case "createfile":
+                    if (CheckArgs(commandName, CommandStats.command_Touch_CreateFile_argsCount, argsCount))
+                        OnCommand.OnCommand_Touch_CreateFile(commandArgs, argsCount);
+                    break;
+                case "cat": case "less":
+                    if (CheckArgs(commandName, CommandStats.command_Cat_Less_argsCount, argsCount))
+                        OnCommand.OnCommand_Cat_Less(commandArgs, argsCount);
+                    break;
+                case "mkdir": case "md":
+                    if (CheckArgs(commandName, CommandStats.command_MD_MkDir_argsCount, argsCount))
+                        OnCommand.OnCommand_MD_MkDir(commandArgs, argsCount);
+                    break;
+                case "rmdir":
+                    if (CheckArgs(commandName, CommandStats.command_RmDir_argsCount, argsCount))
+                        OnCommand.OnCommand_RmDir(commandArgs, argsCount);
                     break;
                 case "pwd":
                     if (CheckArgs(commandName, CommandStats.command_PWD_argsCount, argsCount))
@@ -64,10 +82,9 @@ namespace TerminalEmulator
                     break;
                 case "echo":
                     if (CheckArgs(commandName, CommandStats.command_ECHO_argsCount, argsCount))
-                        OnCommand.OnCommand_ECHO(commandArgs, argsCount);
+                        OnCommand.OnCommand_Echo(commandArgs, argsCount);
                     break;
             }
-            return true;
         }
 
         private static bool CheckArgs(string commandName, int[] commandArgsCount, int argsCount)

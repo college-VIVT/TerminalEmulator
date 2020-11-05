@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.CompilerServices;
+using System.Security;
 
 namespace TerminalEmulator
 {
     public static class OnCommand
     {
-        public static void OnCommand_LS_DIR(List<string> args, int argsCount)
+        public static void OnCommand_Ls_Dir(List<string> args, int argsCount)
         {
             var path = VStore.CurrentPath;
             if (argsCount == 1)
@@ -36,14 +37,14 @@ namespace TerminalEmulator
             Console.WriteLine($"Файлов: {folderContentFiles.Length}\nПапок: {folderContentDirectoryes.Length}");
         }
 
-        public static void OnCommand_HELP()
+        public static void OnCommand_Help()
         {
             Console.WriteLine("Help list: ");
             foreach (var line in CommandStats.HelpList)
                 Console.WriteLine(line);
         }
 
-        public static void OnCommand_MOVE_MV(List<string> args, int argsCount)
+        public static void OnCommand_Move_Mv(List<string> args, int argsCount)
         {
             if (File.Exists(args[0]))
             {
@@ -80,7 +81,7 @@ namespace TerminalEmulator
             }
         }
 
-        public static void OnCommand_COPY_CP(List<string> args, int argsCount)
+        public static void OnCommand_Copy_Cp(List<string> args, int argsCount)
         {
             var overwrite = false;
             if (argsCount == 3)
@@ -121,19 +122,219 @@ namespace TerminalEmulator
         public static void OnCommand_CD(List<string> args, int argsCount)
         {
             var path = args[0];
-            if (path == "~")
-                path = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+            if (path.StartsWith("~"))
+                if (path.Length > 1)
+                    path = Path.GetFullPath(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), path.Substring(2)));
+                else
+                    path = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
             else if (path.StartsWith(".."))
                 path = Path.GetFullPath(Path.Combine(VStore.CurrentPath, path));
-            else if (!Directory.Exists(path))
+            else if (path[1] != ':')
+                path = Path.Combine(VStore.CurrentPath, path);
+
+            if (!Directory.Exists(path))
             {
                 ConsoleHelper.LogError("Указан неверный путь. Проверьте правильность введенного пути.");
                 return;
             }
+
             VStore.CurrentPath = path.Replace('/', '\\');
+        }
 
+        public static void OnCommand_Del_Delete_Rm_Rem_Remove(List<string> args, int argsCount)
+        {
+            var path = args[0];
+            if (path.StartsWith("~"))
+                if (path.Length > 1)
+                    path = Path.GetFullPath(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), path.Substring(2)));
+                else
+                {
+                    ConsoleHelper.LogError("Указан недопустимый путь");
+                    return;
+                }
+            else if (path.StartsWith(".."))
+                path = Path.GetFullPath(Path.Combine(VStore.CurrentPath, path));
+            else if (path[1] != ':')
+                path = Path.Combine(VStore.CurrentPath, path);
 
+            try
+            {
+                File.Delete(path);
+            }
+            catch (DirectoryNotFoundException)
+            {
+                ConsoleHelper.LogError("Указан недопустимый путь");
+            } 
+            catch (IOException)
+            {
+                ConsoleHelper.LogError($"Файл {path} используется");
+            } 
+            catch (UnauthorizedAccessException)
+            {
+                if (Directory.Exists(path))
+                    ConsoleHelper.LogError("Указана ссылка на каталог");
+                else
+                    ConsoleHelper.LogError("Недостаточно прав или файл запущен");
+            }
+        }
 
+        public static void OnCommand_Touch_CreateFile(List<string> args, int argsCount)
+        {
+            var path = args[0];
+            if (path.StartsWith("~"))
+                if (path.Length > 1)
+                    path = Path.GetFullPath(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), path.Substring(2)));
+                else
+                {
+                    ConsoleHelper.LogError("Указан недопустимый путь");
+                    return;
+                }
+            else if (path.StartsWith(".."))
+                path = Path.GetFullPath(Path.Combine(VStore.CurrentPath, path));
+            else if (path[1] != ':')
+                path = Path.Combine(VStore.CurrentPath, path);
+
+            try
+            {
+                File.Create(path).Close();
+            } 
+            catch (UnauthorizedAccessException)
+            {
+                ConsoleHelper.LogError("Недостаточно прав или файл скрыт");
+            } 
+            catch (DirectoryNotFoundException)
+            {
+                ConsoleHelper.LogError("Указан недопустимый путь");
+            }
+        }
+
+        public static void OnCommand_Cat_Less(List<string> args, int argsCount)
+        {
+            var path = args[0];
+            if (path.StartsWith("~"))
+                if (path.Length > 1)
+                    path = Path.GetFullPath(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), path.Substring(2)));
+                else
+                {
+                    ConsoleHelper.LogError("Указан недопустимый путь");
+                    return;
+                }
+            else if (path.StartsWith(".."))
+                path = Path.GetFullPath(Path.Combine(VStore.CurrentPath, path));
+            else if (path[1] != ':')
+                path = Path.Combine(VStore.CurrentPath, path);
+
+            try
+            {
+                var text = File.ReadAllText(path);
+                Console.WriteLine($"Содержимое файла {path}:\n");
+                Console.WriteLine(text);
+            }
+            catch (DirectoryNotFoundException)
+            {
+                ConsoleHelper.LogError("Указан недопустимый путь");
+            }
+            catch (FileNotFoundException)
+            {
+                ConsoleHelper.LogError($"Файл {path} не найден");
+            }
+            catch (IOException)
+            {
+                ConsoleHelper.LogError($"Ошибка при открытии файла {path}");
+            }
+            catch (UnauthorizedAccessException)
+            {
+                if (Directory.Exists(path))
+                    ConsoleHelper.LogError("Указана ссылка на каталог");
+                else
+                    ConsoleHelper.LogError("Нет необходимого разрешения");
+            }
+            catch (SecurityException)
+            {
+                ConsoleHelper.LogError("Нет необходимого разрешения");
+            }
+        }
+
+        public static void OnCommand_MD_MkDir(List<string> args, int argsCount)
+        {
+            var path = args[0];
+            if (path.StartsWith("~"))
+                if (path.Length > 1)
+                    path = Path.GetFullPath(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), path.Substring(2)));
+                else
+                {
+                    ConsoleHelper.LogError("Указан недопустимый путь");
+                    return;
+                }
+            else if (path.StartsWith(".."))
+                path = Path.GetFullPath(Path.Combine(VStore.CurrentPath, path));
+            else if (path[1] != ':')
+                path = Path.Combine(VStore.CurrentPath, path);
+
+            try
+            {
+                Directory.CreateDirectory(path);
+            }
+            catch (DirectoryNotFoundException)
+            {
+                ConsoleHelper.LogError("Указан недопустимый путь");
+            }
+            catch (IOException)
+            {
+                ConsoleHelper.LogError($"{path} является файлом");
+            }
+            catch (UnauthorizedAccessException)
+            {
+                ConsoleHelper.LogError("Недостаточно прав");
+            }
+        }
+
+        public static void OnCommand_RmDir(List<string> args, int argsCount)
+        {
+            var remAll = false;
+            if (argsCount == 2)
+            {
+                if (args[1] == "-f")
+                {
+                    remAll = true;
+                }
+                else
+                {
+                    ConsoleHelper.LogError($"Unknown argument: {args[2]}. Используйте -f для удаления не пустых каталогов");
+                    return;
+                }
+            }
+
+            var path = args[0];
+            if (path.StartsWith("~"))
+                if (path.Length > 1)
+                    path = Path.GetFullPath(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), path.Substring(2)));
+                else
+                {
+                    ConsoleHelper.LogError("Указан недопустимый путь");
+                    return;
+                }
+            else if (path.StartsWith(".."))
+                path = Path.GetFullPath(Path.Combine(VStore.CurrentPath, path));
+            else if (path[1] != ':')
+                path = Path.Combine(VStore.CurrentPath, path);
+
+            try
+            {
+                Directory.Delete(path, remAll);
+            }
+            catch (DirectoryNotFoundException)
+            {
+                ConsoleHelper.LogError("Указан недопустимый путь");
+            }
+            catch (IOException)
+            {
+                ConsoleHelper.LogError("Каталог используется или доступен только для чтения или же каталог не пустой. Для удаления не пустых каталогов используйте флаг -f в конце");
+            } 
+            catch (UnauthorizedAccessException)
+            {
+                ConsoleHelper.LogError("Недостаточно прав");
+            }
         }
 
         public static void OnCommand_PWD()
@@ -141,7 +342,7 @@ namespace TerminalEmulator
             Console.WriteLine(VStore.CurrentPath);
         }
 
-        public static void OnCommand_ECHO(List<string> args, int argsCount)
+        public static void OnCommand_Echo(List<string> args, int argsCount)
         {
             if (argsCount >= 1)
                 foreach (var line in args)
