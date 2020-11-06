@@ -1,4 +1,5 @@
 ﻿using System;
+using static System.Console;
 
 namespace TerminalEmulator
 {
@@ -6,9 +7,9 @@ namespace TerminalEmulator
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("***********************");
-            Console.WriteLine("*!!! Terminal VIVT !!!*");
-            Console.WriteLine("***********************");
+            WriteLine("***********************");
+            WriteLine("*!!! Terminal VIVT !!!*");
+            WriteLine("***********************");
         }
     }
 }
