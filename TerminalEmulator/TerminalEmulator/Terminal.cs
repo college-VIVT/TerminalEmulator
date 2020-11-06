@@ -17,7 +17,6 @@ namespace TerminalEmulator
             name = "Terminal";
             flagPassword = false;
         }
-        //Пользовательский режим
         public void CustomMode()
         {
             while (flagPassword)
@@ -48,9 +47,9 @@ namespace TerminalEmulator
                         CheckingErrorsMethod = DeleteFile;
                         CheckingErrors(CheckingErrorsMethod);
                         break;
-                    //TODO Добавить команды
                     case "help":
-
+                        CustomModeHelp();
+                        break;
                     case "exit":
                         exit = true;
                         break;
@@ -77,7 +76,16 @@ namespace TerminalEmulator
                 Console.WriteLine(e.Message);
             }
         }
-
+        private void CustomModeHelp()
+        {
+            Console.WriteLine("enable - PrivilegedMode");
+            Console.WriteLine("path - Вывод полного пути, где сейчас находитесь в структуре каталогов");
+            Console.WriteLine("newfile - Создание нового файла");
+            Console.WriteLine("copyfile - Копирование файла");
+            Console.WriteLine("deletefile - Удаление файла");
+            Console.WriteLine("help - Все команды");
+            Console.WriteLine("exit - Выход из терминала");
+        }
         private void NewFile()
         {
             string filename = CommandEntry(">Введите путь для нового файла:");
@@ -120,7 +128,9 @@ namespace TerminalEmulator
                     case "path":
                         Console.WriteLine($"{name}/CustomMode/PrivilegedMode");
                         break;
-                    //TODO Добавить команды
+                    case "help":
+                        PrivilegedModeHelp();
+                        break;
                     case "disable":
                         exit = true;
                         break;
@@ -129,7 +139,15 @@ namespace TerminalEmulator
                 }
             }
         }
-
+        private void PrivilegedModeHelp()
+        {
+            Console.WriteLine("hostname - Новое имя для терминала");
+            Console.WriteLine("password - Создание пароля для входа в пользовательский режим терминала");
+            Console.WriteLine("login - Активация пароля для входа в пользовательский режим терминала");
+            Console.WriteLine("path - Вывод полного пути, где сейчас находитесь в структуре каталогов");
+            Console.WriteLine("help - Все команды");
+            Console.WriteLine("disable - выход из PrivilegedMode");
+        }
         //Редактирование имени терминала
         private void TerminalNameEditor()
         {
