@@ -1,4 +1,5 @@
 ﻿using System;
+using static System.Console;
 
 namespace TerminalEmulator
 {
@@ -6,7 +7,9 @@ namespace TerminalEmulator
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("!!! Terminal VIHT !!!");
+            WriteLine("===========================");
+            WriteLine("== !!! Terminal VIHT !!! ==");
+            WriteLine("===========================");
         }
     }
 }
