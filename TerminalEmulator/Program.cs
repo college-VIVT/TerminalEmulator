@@ -12,6 +12,7 @@ namespace TerminalEmulator
             CommandHandler.ToDirectory(Environment.CurrentDirectory);
 
             /* Регистрируем комманды */
+            CommandHandler.Register(new HelpCommand()); // help
             CommandHandler.Register(new ExitCommand()); // exit
             CommandHandler.Register(new PrintWorkingDirectoryCommand()); // pwd
             CommandHandler.Register(new ChangeDirectoryCommand()); // cd <PATH>

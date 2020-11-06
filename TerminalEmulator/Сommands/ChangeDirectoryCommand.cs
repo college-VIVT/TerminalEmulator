@@ -8,7 +8,8 @@ namespace TerminalEmulator.Сommands
     class ChangeDirectoryCommand : ICommand
     {
         public string Name { get; } = "cd";
-
+        public string[] Aliases { get; } = new string[] { };
+        public string Description { get; } = "cd <PATH> - Change current directory";
         public string Execute(string[] args)
         {
             if (args.Length == 2)

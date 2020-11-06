@@ -8,7 +8,8 @@ namespace TerminalEmulator.Сommands
     class CatenateCommand : ICommand
     {
         public string Name { get; } = "cat";
-
+        public string[] Aliases { get; } = new string[] { };
+        public string Description { get; } = "cat <FILE> - Read file content";
         public string Execute(string[] args)
         {
             if (args.Length == 2)

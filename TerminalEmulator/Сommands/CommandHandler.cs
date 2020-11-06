@@ -9,6 +9,7 @@ namespace TerminalEmulator.Сommands
     {
         public static string Path { get; private set; }
         private static Dictionary<string, ICommand> commands = new Dictionary<string, ICommand>();
+        private static Dictionary<string, string> aliases = new Dictionary<string, string>();
 
         public static void ToDirectory(string path)
         {
@@ -22,7 +23,13 @@ namespace TerminalEmulator.Сommands
             }
             
             commands.Add(command.Name, command);
-            
+
+            foreach (string alias in command.Aliases)
+            {
+                if (!aliases.ContainsKey(alias))
+                    aliases.Add(alias, command.Name);
+            }
+
             return true;
         }
 
@@ -33,10 +40,25 @@ namespace TerminalEmulator.Сommands
             if(commands.ContainsKey(args[0]))
             {
                 return commands[args[0]].Execute(args);
+            } else if(aliases.ContainsKey(args[0]))
+            {
+                return commands[aliases[args[0]]].Execute(args);
             } else
             {
                 return "Command not found";
             }
+        }
+
+        public static List<string> GetCommandDescription()
+        {
+            List<string> descriptions = new List<string>();
+
+            foreach (KeyValuePair<string, ICommand> command in commands)
+            {
+                descriptions.Add(command.Value.Description);
+            }
+
+            return descriptions;
         }
     }
 }
