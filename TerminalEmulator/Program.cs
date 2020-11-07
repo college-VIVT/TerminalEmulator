@@ -54,15 +54,17 @@ namespace TerminalEmulator
         {
                 try
                 {
-                    if (!File.Exists(name))
+                if (!File.Exists(name))
+                {
+                    using (StreamWriter writer = File.CreateText(name))
                     {
-                        using (StreamWriter writer = File.CreateText(name))
-                        {
-                            writer.WriteLine($"Это файл {name}");
-                        }
-                        WriteLine("Файл создан");
+                        writer.WriteLine($"Это файл {name}");
                     }
-                    else WriteLine("Этот файл уже существует. Хотите перезаписать его?\nНажмите Enter для перезаписи или другую кнопку для отмены.");
+                    WriteLine("Файл создан");
+                }
+                else
+                {
+                    WriteLine("Этот файл уже существует. Хотите перезаписать его?\nНажмите Enter для перезаписи или другую кнопку для отмены.");
                     if (ReadKey().Key == ConsoleKey.Enter)
                     {
                         using (StreamWriter writer = File.CreateText(name))
@@ -71,6 +73,7 @@ namespace TerminalEmulator
                         }
                         WriteLine("Файл создан");
                     }
+                }
                 }
                 catch (Exception e)
                 {
@@ -114,22 +117,24 @@ namespace TerminalEmulator
             }
         }
 
-        static void CopyFile(string name)
+        static void CopyFile(string name1, string name2)
         {
-
+            if(Directory.Exists(name2))
+            {
+                FileInfo f1 = new FileInfo(name1);
+                Directory.SetCurrentDirectory(name2);
+                FileInfo f2 = new FileInfo(name1);
+                File.Copy(f1.FullName, f2.FullName, true);
+            }
         }
+
         static void Main(string[] args)
         {
             while (true)
             {
-                begin:
                 DirectoryInfo directory = new DirectoryInfo(Directory.GetCurrentDirectory());
                 Write(directory.Name+">"); string msg = ReadLine();
                 string[] command = msg.Split(' ');
-                if (command.Length > 2)
-                {
-                    WriteLine($"{msg} не является командой"); goto begin;
-                }
                 switch (command[0].ToUpper())
                 {
                     case "DIR":
@@ -138,7 +143,13 @@ namespace TerminalEmulator
                         break;
 
                     case "MOVETO":
+                        if (command.Length == 1) goto default;
+                        Directory.SetCurrentDirectory(command[1]); WriteLine();
+                        break;
 
+                    case "CD..":
+                        if (command.Length > 1) goto default;
+                        Directory.SetCurrentDirectory(Convert.ToString(directory.Parent));
                         break;
 
                     case "MADEDIR":
@@ -152,8 +163,8 @@ namespace TerminalEmulator
                         break;
 
                     case "COPY":
-                        if (command.Length == 1) goto default;
-                        CopyFile(command[1]); WriteLine();
+                        if (command.Length == 1 || command.Length==2) goto default;
+                        CopyFile(command[1], command[2]); WriteLine();
                         break;
 
                     case "DELDIR":
@@ -205,6 +216,9 @@ namespace TerminalEmulator
                                     break;
                                 case "EXIT":
                                     WriteLine("Завершает программу\nEXIT\n");
+                                    break;
+                                case "COPY":
+                                    WriteLine("Копирует текстовый файл в указанный каталог\nCOPY [<название файла источника> <название, куда нужно скопировать>]\n<название файла источника> - файл, который копируем,\n<название, куда нужно скопировать> - файл, куда копируем.\n");
                                     break;
                                 default:
                                     WriteLine($"{msg} не является командой");
