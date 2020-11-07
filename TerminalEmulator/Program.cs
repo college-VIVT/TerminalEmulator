@@ -97,7 +97,11 @@ namespace TerminalEmulator
 
                         break;
 
-                    case "DEL":
+                    case "DELDIR":
+
+                        break;
+
+                    case "DELFILE":
 
                         break;
 
@@ -111,18 +115,49 @@ namespace TerminalEmulator
                         break;
 
                     case "HELP":
-                        if (command.Length > 1) goto default;
-                        WriteLine("Для получения сведений об определенной команде наберите HELP <имя команды>");
-                        WriteLine("CLS                  Очистка экрана");
-                        WriteLine("COPY                 Копирование текстового файла в указанный каталог\n");
-                        WriteLine("DEL                  Удаление текстового файла");
-                        WriteLine("DIR                  Выводит список файлов и подкаталогов в текущем каталоге\n");
-                        WriteLine("EXIT                 Завершает программу\n");
-                        WriteLine("HELP                 Выводит справочную информацию о командах\n");
-                        WriteLine("MADEDIR              Создание подкаталога");
-                        WriteLine("MADEFILE             Создание текстового файла");
-                        WriteLine("MOVETO               Переход в указанный каталог\n");
-                        WriteLine("READ                 Выводит содержимое текстового файла\n");
+                        //if (command.Length > 1) goto default;
+                        if (command.Length > 1)
+                        {
+                            switch(command[1].ToUpper())
+                            {
+                                case "DIR":
+                                    WriteLine("Выводит список файлов и подкаталогов в текущем каталоге\nDIR\n");
+                                    break;
+                                case "MADEDIR":
+                                    WriteLine("Создаёт подкаталог в текущем каталоге\nMADEDIR [<название директории>]\n<название директории> - имя директории.\n");
+                                    break;
+                                case "MADEFILE":
+                                    WriteLine("Создаёт файл в текущем каталоге\nMADEFILE [<название файла>]\n<название файла> - имя файла.\n");
+                                    break;
+                                case "CLS":
+                                    WriteLine("Очищает экран консоли\nCLS\n");
+                                    break;
+                                case "HELP":
+                                    WriteLine("Выводит справочную информацию о командах\nHELP [<команда>]\n<команда> - команда, интересующая пользователя.\n");
+                                    break;
+                                case "EXIT":
+                                    WriteLine("Завершает программу\nEXIT\n");
+                                    break;
+                                default:
+                                    WriteLine($"{msg} не является командой");
+                                    break;
+                            }
+                        }
+                        else
+                        {
+                            WriteLine("Для получения сведений об определенной команде наберите HELP <имя команды>");
+                            WriteLine("CLS                  Очистка экрана");
+                            WriteLine("COPY                 Копирование текстового файла в указанный каталог\n");
+                            WriteLine("DELDIR               Удаление каталога");
+                            WriteLine("DELFILE              Удаление текстового файла");
+                            WriteLine("DIR                  Вывод списка файлов и подкаталогов в текущем каталоге\n");
+                            WriteLine("EXIT                 Завершение программы\n");
+                            WriteLine("HELP                 Вывод справочной информации о командах\n");
+                            WriteLine("MADEDIR              Создание подкаталога");
+                            WriteLine("MADEFILE             Создание текстового файла");
+                            WriteLine("MOVETO               Переход в указанный каталог\n");
+                            WriteLine("READ                 Вывод содержимого текстового файла\n");
+                        }
                         break;
 
                     case "EXIT":
