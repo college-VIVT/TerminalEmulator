@@ -15,7 +15,7 @@ namespace TerminalEmulator
                 }
         }
 
-        static void Madedir(string name)
+        static void MadeDir(string name)
         {
             try
             {
@@ -37,7 +37,20 @@ namespace TerminalEmulator
             }
         }
 
-        static void Madefile(string name)
+        static void DeleteDir(string name)
+        {
+            try
+            {
+                DirectoryInfo directory = new DirectoryInfo(name); directory.Delete(true);
+                WriteLine($"Каталог {name} удалён\n");
+            }
+            catch(Exception e)
+            {
+                WriteLine("ОШИБКА!!!" + e.Message);
+            }
+        }
+
+        static void MadeFile(string name)
         {
                 try
                 {
@@ -65,13 +78,32 @@ namespace TerminalEmulator
                 }
         }
 
+        static void DeleteFile(string name)
+        {
+            try
+            {
+                if (File.Exists(name))
+                { File.Delete(name); WriteLine($"Файл {name} удалён\n"); }
+                else WriteLine($"Файл {name} необнаружен в данной директории\n");
+            }
+            catch (Exception e)
+            {
+                WriteLine("ОШИБКА!!!" + e.Message);
+            }
+        }
+
         static void Main(string[] args)
         {
             while (true)
             {
+                begin:
                 DirectoryInfo directory = new DirectoryInfo(Directory.GetCurrentDirectory());
                 Write(directory.Name+">"); string msg = ReadLine();
                 string[] command = msg.Split(' ');
+                if (command.Length > 2)
+                {
+                    WriteLine($"{msg} не является командой"); goto begin;
+                }
                 switch (command[0].ToUpper())
                 {
                     case "DIR":
@@ -85,12 +117,12 @@ namespace TerminalEmulator
 
                     case "MADEDIR":
                         if (command.Length==1) goto default;
-                        Madedir(command[1]);
+                        MadeDir(command[1]);
                         break;
 
                     case "MADEFILE":
                         if (command.Length==1) goto default;
-                        Madefile(command[1]);
+                        MadeFile(command[1]);
                         break;
 
                     case "COPY":
@@ -98,11 +130,13 @@ namespace TerminalEmulator
                         break;
 
                     case "DELDIR":
-
+                        if (command.Length == 1) goto default;
+                        DeleteDir(command[1]);
                         break;
 
                     case "DELFILE":
-
+                        if (command.Length == 1) goto default;
+                        DeleteFile(command[1]);
                         break;
 
                     case "READ":
