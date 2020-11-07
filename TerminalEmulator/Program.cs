@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Globalization;
 using System.IO;
 using static System.Console;
 
@@ -18,7 +21,29 @@ namespace TerminalEmulator
             }
             catch (Exception e)
             {
-                WriteLine(e.ToString());
+                WriteLine("Ошибка: "+e.ToString());
+            }
+        }
+
+        static void Madedir(string name)
+        {
+            DirectoryInfo directory = new DirectoryInfo(name);
+            try
+            {
+                if (directory.Exists)
+                {
+                    WriteLine("Этот каталог уже существует");
+                    return;
+                }
+                else
+                {
+                    directory.Create();
+                    WriteLine("Каталог создан");
+                }
+            }
+            catch (Exception e)
+            {
+                WriteLine("Ошибка: " + e.ToString());
             }
         }
 
@@ -27,8 +52,18 @@ namespace TerminalEmulator
             while (true)
             {
                 DirectoryInfo directory = new DirectoryInfo(Directory.GetCurrentDirectory());
-                Write(directory.Name+">"); string msg = ReadLine().ToUpper();
-                switch (msg)
+                Write(directory.Name+">"); string msg = ReadLine();
+                string[] command = new string[2];
+                if (msg != "help" && msg != "cls" && msg != "dir" && msg != "exit")
+                {
+                    string[] buf = msg.Split(' ');
+                    for (int i = 0; i < 2; i++)
+                    {
+                        command[i] = buf[i];
+                    }
+                }
+                else command[0] = msg;
+                switch (command[0].ToUpper())
                 {
                     case "DIR":
                         Dir(directory); WriteLine();
@@ -38,8 +73,8 @@ namespace TerminalEmulator
 
                         break;
 
-                    case "MADE":
-
+                    case "MADEDIR":
+                        Madedir(command[1]); WriteLine();
                         break;
 
                     case "COPY":
@@ -66,7 +101,7 @@ namespace TerminalEmulator
                         WriteLine("DIR                  Выводит список файлов и подкаталогов в текущем каталоге\n");
                         WriteLine("EXIT                 Завершает программу\n");
                         WriteLine("HELP                 Выводит справочную информацию о командах\n");
-                        WriteLine("MADE                 Создание текстового файла");
+                        WriteLine("MADEDIR              Создание текстового файла");
                         WriteLine("MOVETO               Переход в указанный каталог\n");
                         WriteLine("READ                 Выводит содержимое текстового файла\n");
                         break;
