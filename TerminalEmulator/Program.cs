@@ -92,6 +92,32 @@ namespace TerminalEmulator
             }
         }
 
+        static void Read(string name)
+        {
+            try
+            {
+                if (File.Exists(name))
+                {
+                    WriteLine($"\nфайл {name} открыт\n");
+                    using (var file = new StreamReader(name))
+                    {
+                        while (!file.EndOfStream)
+                            WriteLine(file.ReadLine());
+                    }
+                    WriteLine();
+                }
+                else WriteLine($"Файл {name} не найден\n");
+            }
+            catch(Exception e)
+            {
+                WriteLine("ОШИБКА!!!" + e.Message);
+            }
+        }
+
+        static void CopyFile(string name)
+        {
+
+        }
         static void Main(string[] args)
         {
             while (true)
@@ -117,30 +143,32 @@ namespace TerminalEmulator
 
                     case "MADEDIR":
                         if (command.Length==1) goto default;
-                        MadeDir(command[1]);
+                        MadeDir(command[1]); WriteLine();
                         break;
 
                     case "MADEFILE":
                         if (command.Length==1) goto default;
-                        MadeFile(command[1]);
+                        MadeFile(command[1]); WriteLine();
                         break;
 
                     case "COPY":
-
+                        if (command.Length == 1) goto default;
+                        CopyFile(command[1]); WriteLine();
                         break;
 
                     case "DELDIR":
                         if (command.Length == 1) goto default;
-                        DeleteDir(command[1]);
+                        DeleteDir(command[1]); WriteLine();
                         break;
 
                     case "DELFILE":
                         if (command.Length == 1) goto default;
-                        DeleteFile(command[1]);
+                        DeleteFile(command[1]); WriteLine();
                         break;
 
                     case "READ":
-
+                        if (command.Length == 1) goto default;
+                        Read(command[1]); WriteLine();
                         break;
 
                     case "CLS":
@@ -160,8 +188,14 @@ namespace TerminalEmulator
                                 case "MADEDIR":
                                     WriteLine("Создаёт подкаталог в текущем каталоге\nMADEDIR [<название директории>]\n<название директории> - имя директории.\n");
                                     break;
+                                case "DELDIR":
+                                    WriteLine("Удаляет подкаталог в текущем каталоге\nDELDIR [<название директории>]\n<название директории> - имя директории.\n");
+                                    break;
                                 case "MADEFILE":
                                     WriteLine("Создаёт файл в текущем каталоге\nMADEFILE [<название файла>]\n<название файла> - имя файла.\n");
+                                    break;
+                                case "DELFILE":
+                                    WriteLine("Удаляет файл в текущем каталоге\nDELFILE [<название файла>]\n<название файла> - имя файла.\n");
                                     break;
                                 case "CLS":
                                     WriteLine("Очищает экран консоли\nCLS\n");
