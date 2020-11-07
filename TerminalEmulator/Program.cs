@@ -188,7 +188,6 @@ namespace TerminalEmulator
                         break;
 
                     case "HELP":
-                        //if (command.Length > 1) goto default;
                         if (command.Length > 1)
                         {
                             switch(command[1].ToUpper())
