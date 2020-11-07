@@ -1,19 +1,37 @@
 ﻿using System;
+using System.IO;
 using static System.Console;
 
 namespace TerminalEmulator
 {
     class Program
     {
+        static void Dir(DirectoryInfo directory)
+        {
+            try
+            {
+                var files = directory.GetFileSystemInfos();
+                foreach(var file in files)
+                {
+                    WriteLine(file.CreationTime + "       " + file.Name);
+                }
+            }
+            catch (Exception e)
+            {
+                WriteLine(e.ToString());
+            }
+        }
+
         static void Main(string[] args)
         {
             while (true)
             {
-                Write("Terminal>"); string msg = ReadLine().ToUpper();
+                DirectoryInfo directory = new DirectoryInfo(Directory.GetCurrentDirectory());
+                Write(directory.Name+">"); string msg = ReadLine().ToUpper();
                 switch (msg)
                 {
                     case "DIR":
-
+                        Dir(directory); WriteLine();
                         break;
 
                     case "MOVETO":
@@ -45,7 +63,7 @@ namespace TerminalEmulator
                         WriteLine("CLS                  Очистка экрана");
                         WriteLine("COPY                 Копирование текстового файла в указанный каталог\n");
                         WriteLine("DEL                  Удаление текстового файла");
-                        WriteLine("DIV                  Выводит список файлов и подкаталогов в текущем каталоге\n");
+                        WriteLine("DIR                  Выводит список файлов и подкаталогов в текущем каталоге\n");
                         WriteLine("EXIT                 Завершает программу\n");
                         WriteLine("HELP                 Выводит справочную информацию о командах\n");
                         WriteLine("MADE                 Создание текстового файла");
@@ -55,6 +73,9 @@ namespace TerminalEmulator
 
                     case "EXIT":
                         return;
+                    default:
+                        WriteLine($"{msg} не является командой");
+                        break;
                 }
             }
         }
