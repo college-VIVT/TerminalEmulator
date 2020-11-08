@@ -119,12 +119,20 @@ namespace TerminalEmulator
 
         static void CopyFile(string name1, string name2)
         {
-            if(Directory.Exists(name2))
+            try
             {
-                FileInfo f1 = new FileInfo(name1);
-                Directory.SetCurrentDirectory(name2);
-                FileInfo f2 = new FileInfo(name1);
-                File.Copy(f1.FullName, f2.FullName, true);
+                if (Directory.Exists(name2))
+                {
+                    FileInfo f1 = new FileInfo(name1);
+                    Directory.SetCurrentDirectory(name2);
+                    FileInfo f2 = new FileInfo(name1);
+                    File.Copy(f1.FullName, f2.FullName, true);
+                    WriteLine("Файл скопирован\n");
+                }
+            }
+            catch (Exception e)
+            {
+                WriteLine("ОШИБКА!!!" + e.Message);
             }
         }
 
@@ -138,59 +146,85 @@ namespace TerminalEmulator
                 switch (command[0].ToUpper())
                 {
                     case "DIR":
-                        if (command.Length > 1) goto default;
-                        Dir(directory); WriteLine();
+                        if (command.Length == 1) 
+                        { Dir(directory); WriteLine(); } else goto default;
                         break;
 
                     case "MOVETO":
-                        if (command.Length == 1) goto default;
-                        Directory.SetCurrentDirectory(command[1]); WriteLine();
+                        if (command.Length == 2) 
+                        {
+                            try
+                            {
+                                Directory.SetCurrentDirectory(command[1]);
+                            }
+                            catch (Exception e)
+                            {
+                                WriteLine("ОШИБКА!!!" + e.Message);
+                            }
+                            WriteLine();
+                        } else goto default;
                         break;
 
-                    case "CD..":
-                        if (command.Length > 1) goto default;
-                        Directory.SetCurrentDirectory(Convert.ToString(directory.Parent));
+                    case "CD":
+                        if (command.Length == 1) 
+                        {
+                            try
+                            {
+                                Directory.SetCurrentDirectory(Convert.ToString(directory.Parent));
+                            }
+                            catch (Exception e)
+                            {
+                                WriteLine("ОШИБКА!!!" + e.Message);
+                            }
+                        }else goto default;
                         break;
 
                     case "MADEDIR":
-                        if (command.Length==1) goto default;
-                        MadeDir(command[1]); WriteLine();
+                        if (command.Length==2) 
+                        { MadeDir(command[1]); WriteLine(); } 
+                        else goto default;
                         break;
 
                     case "MADEFILE":
-                        if (command.Length==1) goto default;
-                        MadeFile(command[1]); WriteLine();
+                        if (command.Length==2) 
+                        { MadeFile(command[1]); WriteLine(); } 
+                        else goto default;
                         break;
 
                     case "COPY":
-                        if (command.Length == 1 || command.Length==2) goto default;
-                        CopyFile(command[1], command[2]); WriteLine();
+                        if (command.Length == 3) 
+                        { CopyFile(command[1], command[2]); WriteLine(); }
+                        else goto default;
                         break;
 
                     case "DELDIR":
-                        if (command.Length == 1) goto default;
-                        DeleteDir(command[1]); WriteLine();
+                        if (command.Length == 2) 
+                        { DeleteDir(command[1]); WriteLine(); }
+                        else goto default;
                         break;
 
                     case "DELFILE":
-                        if (command.Length == 1) goto default;
-                        DeleteFile(command[1]); WriteLine();
+                        if (command.Length == 2) 
+                        { DeleteFile(command[1]); WriteLine(); }
+                        else goto default;
                         break;
 
                     case "READ":
-                        if (command.Length == 1) goto default;
-                        Read(command[1]); WriteLine();
+                        if (command.Length == 2)
+                        { Read(command[1]); WriteLine(); }
+                        else goto default;
                         break;
 
                     case "CLS":
-                        if (command.Length > 1) goto default;
-                        Clear();
+                        if (command.Length == 1) 
+                        Clear(); 
+                        else goto default;
                         break;
 
                     case "HELP":
-                        if (command.Length > 1)
+                        if (command.Length == 2)
                         {
-                            switch(command[1].ToUpper())
+                            switch (command[1].ToUpper())
                             {
                                 case "DIR":
                                     WriteLine("Выводит список файлов и подкаталогов в текущем каталоге\nDIR\n");
@@ -219,14 +253,24 @@ namespace TerminalEmulator
                                 case "COPY":
                                     WriteLine("Копирует текстовый файл в указанный каталог\nCOPY [<название файла источника> <название, куда нужно скопировать>]\n<название файла источника> - файл, который копируем,\n<название, куда нужно скопировать> - файл, куда копируем.\n");
                                     break;
+                                case "CD":
+                                    WriteLine("Переходит в родительский каталог\nCD\n");
+                                    break;
+                                case "MOVETO":
+                                    WriteLine("Переходит на каталог ниже, если он есть\nMOVETO [<название подкаталога>]\n<название подкаталога> - имя подкаталога, куда нужно перейти.\n");
+                                    break;
+                                case "READ":
+                                    WriteLine("Читает файл, если он существует\nREAD [<название файла>]\n<название файла> - файл, который нужно прочитать");
+                                    break;
                                 default:
                                     WriteLine($"{msg} не является командой");
                                     break;
                             }
                         }
-                        else
+                        else if (command.Length == 1)
                         {
                             WriteLine("Для получения сведений об определенной команде наберите HELP <имя команды>");
+                            WriteLine("CD                   Переход в родительский каталог");
                             WriteLine("CLS                  Очистка экрана");
                             WriteLine("COPY                 Копирование текстового файла в указанный каталог\n");
                             WriteLine("DELDIR               Удаление каталога");
@@ -236,14 +280,17 @@ namespace TerminalEmulator
                             WriteLine("HELP                 Вывод справочной информации о командах\n");
                             WriteLine("MADEDIR              Создание подкаталога");
                             WriteLine("MADEFILE             Создание текстового файла");
-                            WriteLine("MOVETO               Переход в указанный каталог\n");
+                            WriteLine("MOVETO               Переход в указанный подкаталог\n");
                             WriteLine("READ                 Вывод содержимого текстового файла\n");
+                            
                         }
+                        else goto default;
                         break;
 
                     case "EXIT":
-                        if (command.Length > 1) goto default;
+                        if (command.Length == 1) 
                         return;
+                        else goto default;
 
                     default:
                         WriteLine($"{msg} не является командой");
