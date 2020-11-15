@@ -21,15 +21,15 @@ namespace TerminalEmulator
 				switch (command)
 				{
 					case "help":
-						Console.WriteLine("Команда pwd: показывает содержимое каталога");
-						Console.WriteLine("Команда open: открывает указанный каталог");
-						Console.WriteLine("Команда dname: показывает имена имеющихся дисков");
-						Console.WriteLine("Команда dopen: позволяет перейти к каталогу указанного диска");
-						Console.WriteLine("Команда cnew: позволяет создать новый каталог");
-						Console.WriteLine("Команда cdel: позволяет удалить каталог");
-						Console.WriteLine("Команда fnew: позволяет создать новый файл");
-						Console.WriteLine("Команда fread: позволяет прочитать файл");
-						Console.WriteLine("Команда сс: завершает работу приложения");
+						Console.WriteLine("Команда pwd:\tпоказывает содержимое каталога");
+						Console.WriteLine("Команда open:\tоткрывает указанный каталог");
+						Console.WriteLine("Команда dname:\tпоказывает имена имеющихся дисков");
+						Console.WriteLine("Команда dopen:\tпозволяет перейти к каталогу указанного диска");
+						Console.WriteLine("Команда cnew:\tпозволяет создать новый каталог");
+						Console.WriteLine("Команда cdel:\tпозволяет удалить каталог");
+						Console.WriteLine("Команда fnew:\tпозволяет создать новый файл");
+						Console.WriteLine("Команда fread:\tпозволяет прочитать файл");
+						Console.WriteLine("Команда сс:\tзавершает работу приложения");
 						break;
 					case "fread":
 						Console.WriteLine("Укажите имя файла.txt");
@@ -63,6 +63,7 @@ namespace TerminalEmulator
 						if (!dirInfo.Exists)
 						{
 							dirInfo.Create();
+							dir_name += "\\";
 						}
 						break;
 
@@ -80,7 +81,7 @@ namespace TerminalEmulator
 						}
 						break;
 
-					case "cс":
+					case "cc":
 						working = false;
 						break;
 
@@ -104,7 +105,7 @@ namespace TerminalEmulator
 
 					case "open":
 						log_name = Console.ReadLine();
-						dir_name += log_name;
+						dir_name += log_name + "\\";
 						if (!Directory.Exists(dir_name))
 						{
 							Console.WriteLine("Директория не найдена!");
