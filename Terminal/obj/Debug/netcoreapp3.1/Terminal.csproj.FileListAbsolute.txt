@@ -1,0 +1,39 @@
+D:\Программирование\Repository\Terminal\Terminal\bin\Debug\netcoreapp3.1\Terminal.exe
+D:\Программирование\Repository\Terminal\Terminal\bin\Debug\netcoreapp3.1\Terminal.deps.json
+D:\Программирование\Repository\Terminal\Terminal\bin\Debug\netcoreapp3.1\Terminal.runtimeconfig.json
+D:\Программирование\Repository\Terminal\Terminal\bin\Debug\netcoreapp3.1\Terminal.runtimeconfig.dev.json
+D:\Программирование\Repository\Terminal\Terminal\bin\Debug\netcoreapp3.1\Terminal.dll
+D:\Программирование\Repository\Terminal\Terminal\bin\Debug\netcoreapp3.1\Terminal.pdb
+D:\Программирование\Repository\Terminal\Terminal\obj\Debug\netcoreapp3.1\Terminal.csprojAssemblyReference.cache
+D:\Программирование\Repository\Terminal\Terminal\obj\Debug\netcoreapp3.1\Terminal.AssemblyInfoInputs.cache
+D:\Программирование\Repository\Terminal\Terminal\obj\Debug\netcoreapp3.1\Terminal.AssemblyInfo.cs
+D:\Программирование\Repository\Terminal\Terminal\obj\Debug\netcoreapp3.1\Terminal.csproj.CoreCompileInputs.cache
+D:\Программирование\Repository\Terminal\Terminal\obj\Debug\netcoreapp3.1\Terminal.dll
+D:\Программирование\Repository\Terminal\Terminal\obj\Debug\netcoreapp3.1\Terminal.pdb
+D:\Программирование\Repository\Terminal\Terminal\obj\Debug\netcoreapp3.1\Terminal.genruntimeconfig.cache
+D:\Программирование\Repository\Идеальный Terminal\Terminal\bin\Debug\netcoreapp3.1\Terminal.exe
+D:\Программирование\Repository\Идеальный Terminal\Terminal\bin\Debug\netcoreapp3.1\Terminal.deps.json
+D:\Программирование\Repository\Идеальный Terminal\Terminal\bin\Debug\netcoreapp3.1\Terminal.runtimeconfig.json
+D:\Программирование\Repository\Идеальный Terminal\Terminal\bin\Debug\netcoreapp3.1\Terminal.runtimeconfig.dev.json
+D:\Программирование\Repository\Идеальный Terminal\Terminal\bin\Debug\netcoreapp3.1\Terminal.dll
+D:\Программирование\Repository\Идеальный Terminal\Terminal\bin\Debug\netcoreapp3.1\Terminal.pdb
+D:\Программирование\Repository\Идеальный Terminal\Terminal\obj\Debug\netcoreapp3.1\Terminal.csprojAssemblyReference.cache
+D:\Программирование\Repository\Идеальный Terminal\Terminal\obj\Debug\netcoreapp3.1\Terminal.AssemblyInfoInputs.cache
+D:\Программирование\Repository\Идеальный Terminal\Terminal\obj\Debug\netcoreapp3.1\Terminal.AssemblyInfo.cs
+D:\Программирование\Repository\Идеальный Terminal\Terminal\obj\Debug\netcoreapp3.1\Terminal.csproj.CoreCompileInputs.cache
+D:\Программирование\Repository\Идеальный Terminal\Terminal\obj\Debug\netcoreapp3.1\Terminal.dll
+D:\Программирование\Repository\Идеальный Terminal\Terminal\obj\Debug\netcoreapp3.1\Terminal.pdb
+D:\Программирование\Repository\Идеальный Terminal\Terminal\obj\Debug\netcoreapp3.1\Terminal.genruntimeconfig.cache
+D:\Программирование\Repository\Саня\Terminal-2\Terminal\bin\Debug\netcoreapp3.1\Terminal.exe
+D:\Программирование\Repository\Саня\Terminal-2\Terminal\bin\Debug\netcoreapp3.1\Terminal.deps.json
+D:\Программирование\Repository\Саня\Terminal-2\Terminal\bin\Debug\netcoreapp3.1\Terminal.runtimeconfig.json
+D:\Программирование\Repository\Саня\Terminal-2\Terminal\bin\Debug\netcoreapp3.1\Terminal.runtimeconfig.dev.json
+D:\Программирование\Repository\Саня\Terminal-2\Terminal\bin\Debug\netcoreapp3.1\Terminal.dll
+D:\Программирование\Repository\Саня\Terminal-2\Terminal\bin\Debug\netcoreapp3.1\Terminal.pdb
+D:\Программирование\Repository\Саня\Terminal-2\Terminal\obj\Debug\netcoreapp3.1\Terminal.csprojAssemblyReference.cache
+D:\Программирование\Repository\Саня\Terminal-2\Terminal\obj\Debug\netcoreapp3.1\Terminal.AssemblyInfoInputs.cache
+D:\Программирование\Repository\Саня\Terminal-2\Terminal\obj\Debug\netcoreapp3.1\Terminal.AssemblyInfo.cs
+D:\Программирование\Repository\Саня\Terminal-2\Terminal\obj\Debug\netcoreapp3.1\Terminal.csproj.CoreCompileInputs.cache
+D:\Программирование\Repository\Саня\Terminal-2\Terminal\obj\Debug\netcoreapp3.1\Terminal.dll
+D:\Программирование\Repository\Саня\Terminal-2\Terminal\obj\Debug\netcoreapp3.1\Terminal.pdb
+D:\Программирование\Repository\Саня\Terminal-2\Terminal\obj\Debug\netcoreapp3.1\Terminal.genruntimeconfig.cache
