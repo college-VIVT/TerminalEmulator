@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30523.141
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TerminalEmulator", "TerminalEmulator\TerminalEmulator.csproj", "{5E488994-3DBA-4AA4-B54E-C27CCA237359}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5E488994-3DBA-4AA4-B54E-C27CCA237359}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E488994-3DBA-4AA4-B54E-C27CCA237359}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E488994-3DBA-4AA4-B54E-C27CCA237359}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E488994-3DBA-4AA4-B54E-C27CCA237359}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {39EA7CC5-B8EF-4E6A-9F29-58E2180690AD}
+	EndGlobalSection
+EndGlobal
