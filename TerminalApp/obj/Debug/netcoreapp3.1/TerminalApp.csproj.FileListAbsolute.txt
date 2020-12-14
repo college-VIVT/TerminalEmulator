@@ -1,0 +1,13 @@
+C:\Users\2V01\source\repos\TerminalApp\TerminalApp\bin\Debug\netcoreapp3.1\TerminalApp.exe
+C:\Users\2V01\source\repos\TerminalApp\TerminalApp\bin\Debug\netcoreapp3.1\TerminalApp.deps.json
+C:\Users\2V01\source\repos\TerminalApp\TerminalApp\bin\Debug\netcoreapp3.1\TerminalApp.runtimeconfig.json
+C:\Users\2V01\source\repos\TerminalApp\TerminalApp\bin\Debug\netcoreapp3.1\TerminalApp.runtimeconfig.dev.json
+C:\Users\2V01\source\repos\TerminalApp\TerminalApp\bin\Debug\netcoreapp3.1\TerminalApp.dll
+C:\Users\2V01\source\repos\TerminalApp\TerminalApp\bin\Debug\netcoreapp3.1\TerminalApp.pdb
+C:\Users\2V01\source\repos\TerminalApp\TerminalApp\obj\Debug\netcoreapp3.1\TerminalApp.csprojAssemblyReference.cache
+C:\Users\2V01\source\repos\TerminalApp\TerminalApp\obj\Debug\netcoreapp3.1\TerminalApp.AssemblyInfoInputs.cache
+C:\Users\2V01\source\repos\TerminalApp\TerminalApp\obj\Debug\netcoreapp3.1\TerminalApp.AssemblyInfo.cs
+C:\Users\2V01\source\repos\TerminalApp\TerminalApp\obj\Debug\netcoreapp3.1\TerminalApp.csproj.CoreCompileInputs.cache
+C:\Users\2V01\source\repos\TerminalApp\TerminalApp\obj\Debug\netcoreapp3.1\TerminalApp.dll
+C:\Users\2V01\source\repos\TerminalApp\TerminalApp\obj\Debug\netcoreapp3.1\TerminalApp.pdb
+C:\Users\2V01\source\repos\TerminalApp\TerminalApp\obj\Debug\netcoreapp3.1\TerminalApp.genruntimeconfig.cache
