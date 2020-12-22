@@ -1,0 +1,6 @@
+C:\Users\student\Documents\Visual Studio 2013\Projects\Папич\ConsoleApplication12\ConsoleApplication12\bin\Debug\ConsoleApplication12.exe.config
+C:\Users\student\Documents\Visual Studio 2013\Projects\Папич\ConsoleApplication12\ConsoleApplication12\bin\Debug\ConsoleApplication12.exe
+C:\Users\student\Documents\Visual Studio 2013\Projects\Папич\ConsoleApplication12\ConsoleApplication12\bin\Debug\ConsoleApplication12.pdb
+C:\Users\student\Documents\Visual Studio 2013\Projects\Папич\ConsoleApplication12\ConsoleApplication12\obj\Debug\ConsoleApplication12.csprojResolveAssemblyReference.cache
+C:\Users\student\Documents\Visual Studio 2013\Projects\Папич\ConsoleApplication12\ConsoleApplication12\obj\Debug\ConsoleApplication12.exe
+C:\Users\student\Documents\Visual Studio 2013\Projects\Папич\ConsoleApplication12\ConsoleApplication12\obj\Debug\ConsoleApplication12.pdb
