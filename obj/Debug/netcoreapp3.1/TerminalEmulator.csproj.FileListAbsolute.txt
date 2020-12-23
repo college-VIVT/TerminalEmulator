@@ -1,0 +1,26 @@
+C:\Users\Nikita\Desktop\ВИВТ\Работы однокурсников\Гладун\2000\Системное программирование 2, 4-5\TerminalEmulator\TerminalEmulator\bin\Debug\netcoreapp3.1\TerminalEmulator.exe
+C:\Users\Nikita\Desktop\ВИВТ\Работы однокурсников\Гладун\2000\Системное программирование 2, 4-5\TerminalEmulator\TerminalEmulator\bin\Debug\netcoreapp3.1\TerminalEmulator.deps.json
+C:\Users\Nikita\Desktop\ВИВТ\Работы однокурсников\Гладун\2000\Системное программирование 2, 4-5\TerminalEmulator\TerminalEmulator\bin\Debug\netcoreapp3.1\TerminalEmulator.runtimeconfig.json
+C:\Users\Nikita\Desktop\ВИВТ\Работы однокурсников\Гладун\2000\Системное программирование 2, 4-5\TerminalEmulator\TerminalEmulator\bin\Debug\netcoreapp3.1\TerminalEmulator.runtimeconfig.dev.json
+C:\Users\Nikita\Desktop\ВИВТ\Работы однокурсников\Гладун\2000\Системное программирование 2, 4-5\TerminalEmulator\TerminalEmulator\bin\Debug\netcoreapp3.1\TerminalEmulator.dll
+C:\Users\Nikita\Desktop\ВИВТ\Работы однокурсников\Гладун\2000\Системное программирование 2, 4-5\TerminalEmulator\TerminalEmulator\bin\Debug\netcoreapp3.1\TerminalEmulator.pdb
+C:\Users\Nikita\Desktop\ВИВТ\Работы однокурсников\Гладун\2000\Системное программирование 2, 4-5\TerminalEmulator\TerminalEmulator\obj\Debug\netcoreapp3.1\TerminalEmulator.csprojAssemblyReference.cache
+C:\Users\Nikita\Desktop\ВИВТ\Работы однокурсников\Гладун\2000\Системное программирование 2, 4-5\TerminalEmulator\TerminalEmulator\obj\Debug\netcoreapp3.1\TerminalEmulator.AssemblyInfoInputs.cache
+C:\Users\Nikita\Desktop\ВИВТ\Работы однокурсников\Гладун\2000\Системное программирование 2, 4-5\TerminalEmulator\TerminalEmulator\obj\Debug\netcoreapp3.1\TerminalEmulator.AssemblyInfo.cs
+C:\Users\Nikita\Desktop\ВИВТ\Работы однокурсников\Гладун\2000\Системное программирование 2, 4-5\TerminalEmulator\TerminalEmulator\obj\Debug\netcoreapp3.1\TerminalEmulator.csproj.CoreCompileInputs.cache
+C:\Users\Nikita\Desktop\ВИВТ\Работы однокурсников\Гладун\2000\Системное программирование 2, 4-5\TerminalEmulator\TerminalEmulator\obj\Debug\netcoreapp3.1\TerminalEmulator.dll
+C:\Users\Nikita\Desktop\ВИВТ\Работы однокурсников\Гладун\2000\Системное программирование 2, 4-5\TerminalEmulator\TerminalEmulator\obj\Debug\netcoreapp3.1\TerminalEmulator.pdb
+C:\Users\Nikita\Desktop\ВИВТ\Работы однокурсников\Гладун\2000\Системное программирование 2, 4-5\TerminalEmulator\TerminalEmulator\obj\Debug\netcoreapp3.1\TerminalEmulator.genruntimeconfig.cache
+C:\Users\Nikita\Desktop\ВИВТ\Работы однокурсников\Семёнов Никита\Системное программирование\Terminal-Emulator-2\TerminalEmulator\TerminalEmulator\bin\Debug\netcoreapp3.1\TerminalEmulator.exe
+C:\Users\Nikita\Desktop\ВИВТ\Работы однокурсников\Семёнов Никита\Системное программирование\Terminal-Emulator-2\TerminalEmulator\TerminalEmulator\bin\Debug\netcoreapp3.1\TerminalEmulator.deps.json
+C:\Users\Nikita\Desktop\ВИВТ\Работы однокурсников\Семёнов Никита\Системное программирование\Terminal-Emulator-2\TerminalEmulator\TerminalEmulator\bin\Debug\netcoreapp3.1\TerminalEmulator.runtimeconfig.json
+C:\Users\Nikita\Desktop\ВИВТ\Работы однокурсников\Семёнов Никита\Системное программирование\Terminal-Emulator-2\TerminalEmulator\TerminalEmulator\bin\Debug\netcoreapp3.1\TerminalEmulator.runtimeconfig.dev.json
+C:\Users\Nikita\Desktop\ВИВТ\Работы однокурсников\Семёнов Никита\Системное программирование\Terminal-Emulator-2\TerminalEmulator\TerminalEmulator\bin\Debug\netcoreapp3.1\TerminalEmulator.dll
+C:\Users\Nikita\Desktop\ВИВТ\Работы однокурсников\Семёнов Никита\Системное программирование\Terminal-Emulator-2\TerminalEmulator\TerminalEmulator\bin\Debug\netcoreapp3.1\TerminalEmulator.pdb
+C:\Users\Nikita\Desktop\ВИВТ\Работы однокурсников\Семёнов Никита\Системное программирование\Terminal-Emulator-2\TerminalEmulator\TerminalEmulator\obj\Debug\netcoreapp3.1\TerminalEmulator.csprojAssemblyReference.cache
+C:\Users\Nikita\Desktop\ВИВТ\Работы однокурсников\Семёнов Никита\Системное программирование\Terminal-Emulator-2\TerminalEmulator\TerminalEmulator\obj\Debug\netcoreapp3.1\TerminalEmulator.AssemblyInfoInputs.cache
+C:\Users\Nikita\Desktop\ВИВТ\Работы однокурсников\Семёнов Никита\Системное программирование\Terminal-Emulator-2\TerminalEmulator\TerminalEmulator\obj\Debug\netcoreapp3.1\TerminalEmulator.AssemblyInfo.cs
+C:\Users\Nikita\Desktop\ВИВТ\Работы однокурсников\Семёнов Никита\Системное программирование\Terminal-Emulator-2\TerminalEmulator\TerminalEmulator\obj\Debug\netcoreapp3.1\TerminalEmulator.csproj.CoreCompileInputs.cache
+C:\Users\Nikita\Desktop\ВИВТ\Работы однокурсников\Семёнов Никита\Системное программирование\Terminal-Emulator-2\TerminalEmulator\TerminalEmulator\obj\Debug\netcoreapp3.1\TerminalEmulator.dll
+C:\Users\Nikita\Desktop\ВИВТ\Работы однокурсников\Семёнов Никита\Системное программирование\Terminal-Emulator-2\TerminalEmulator\TerminalEmulator\obj\Debug\netcoreapp3.1\TerminalEmulator.pdb
+C:\Users\Nikita\Desktop\ВИВТ\Работы однокурсников\Семёнов Никита\Системное программирование\Terminal-Emulator-2\TerminalEmulator\TerminalEmulator\obj\Debug\netcoreapp3.1\TerminalEmulator.genruntimeconfig.cache
